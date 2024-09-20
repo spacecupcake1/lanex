@@ -26,7 +26,11 @@
 <h3>Available Lessons</h3>
 
 <% @lessons.each do |lesson| %>
-  <%= render 'lessons/lesson_card', lesson: lesson %>
+  <div class="lesson">
+    <h3><%= link_to lesson.title, lesson_path(lesson) %></h3>
+    <p>Level: <%= lesson.level %></p>
+    <p>Teacher: <%= lesson.teacher.full_name %></p>
+  </div>
 <% end %>
 
 <% if current_user && current_user.role == 'teacher' %>

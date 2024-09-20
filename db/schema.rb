@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_20_071211) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_20_070818) do
   create_table "bookings", force: :cascade do |t|
     t.string "booking_id"
     t.date "booking_date"
@@ -40,15 +40,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_071211) do
     t.string "first_name"
     t.string "last_name"
     t.string "user_name"
-    t.string "password"
+    t.string "password_digest"
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
-    t.string "password_digest"
   end
 
   add_foreign_key "bookings", "lessons"
   add_foreign_key "bookings", "students"
-  add_foreign_key "lessons", "teachers"
 end

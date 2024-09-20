@@ -1,0 +1,41 @@
+<%= form_with(model: lesson, local: true) do |form| %>
+    <% if lesson.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+        <ul>
+          <% lesson.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :teaching_language %>
+      <%= form.text_field :teaching_language %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :known_language %>
+      <%= form.text_field :known_language %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :level %>
+      <%= form.select :level, ['Beginner', 'Intermediate', 'Advanced'], prompt: 'Select level' %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :available_days %>
+      <%= form.text_field :available_days %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :meeting_platform %>
+      <%= form.text_field :meeting_platform %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>

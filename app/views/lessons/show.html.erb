@@ -1,2 +1,14 @@
-<h1>Lessons#show</h1>
-<p>Find me in app/views/lessons/show.html.erb</p>
+<h1><%= @lesson.title %></h1>
+
+<p><strong>Teaching Language:</strong> <%= @lesson.teaching_language %></p>
+<p><strong>Known Language:</strong> <%= @lesson.known_language %></p>
+<p><strong>Level:</strong> <%= @lesson.level %></p>
+<p><strong>Available Days:</strong> <%= @lesson.available_days %></p>
+<p><strong>Meeting Platform:</strong> <%= @lesson.meeting_platform %></p>
+<p><strong>Teacher:</strong> <%= @lesson.teacher.full_name %></p>
+
+<% if current_user == @lesson.teacher %>
+  <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+  <%= link_to 'Delete', @lesson, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', lessons_path %>
