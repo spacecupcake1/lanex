@@ -37,3 +37,18 @@ form {
 select, input[type="submit"] {
   margin-right: 10px;
 }
+
+.profile-details {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.actions {
+  margin-top: 20px;
+}

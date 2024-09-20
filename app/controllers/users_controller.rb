@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login, except: [:new, :create]
+  before_action :authorize_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
@@ -54,4 +55,12 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def authorize_user
+    unless @user == current_user
+      flash[:error] = "You are not authorized to view or edit this profile"
+      redirect_to root_path
+    end
+  end
+
 end

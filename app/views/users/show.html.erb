@@ -1,2 +1,40 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>My Profile</h1>
+
+<div class="profile-details">
+  <h2><%= @user.full_name %></h2>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>Role:</strong> <%= @user.role.capitalize %></p>
+</div>
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+<% if @user.role == 'student' %>
+  <h3>My Courses</h3>
+  <% if @user.bookings.any? %>
+    <ul>
+      <% @user.bookings.each do |booking| %>
+        <li>
+          <%= booking.lesson.teaching_language %> (Level: <%= booking.lesson.level %>)
+          - Booked on: <%= booking.booking_date %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You haven't booked any courses yet.</p>
+  <% end %>
+<% elsif @user.role == 'teacher' %>
+  <h3>My Lessons</h3>
+  <% if @user.lessons.any? %>
+    <ul>
+      <% @user.lessons.each do |lesson| %>
+        <li>
+          <%= lesson.teaching_language %> (Level: <%= lesson.level %>)
+          - <%= pluralize(lesson.bookings.count, 'student') %> enrolled
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You haven't created any lessons yet.</p>
+  <% end %>
+  <%= link_to 'Create New Lesson', new_lesson_path %>
+<% end %>
