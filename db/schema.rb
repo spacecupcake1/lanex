@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_20_070818) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_21_000001) do
   create_table "bookings", force: :cascade do |t|
     t.string "booking_id"
     t.date "booking_date"
-    t.integer "student_id", null: false
+    t.integer "user_id", null: false
     t.integer "lesson_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
-    t.index ["student_id"], name: "index_bookings_on_student_id"
+    t.index ["user_id"], name: "index_bookings_on_student_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_070818) do
     t.string "available_days"
     t.string "meeting_platform"
     t.string "level"
-    t.integer "teacher_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
+    t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,5 +48,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_070818) do
   end
 
   add_foreign_key "bookings", "lessons"
-  add_foreign_key "bookings", "students"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "lessons", "users"
 end

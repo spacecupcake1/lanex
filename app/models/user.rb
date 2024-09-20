@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :bookings, foreign_key: 'student_id'
-    has_many :lessons, foreign_key: 'teacher_id'
+    has_many :bookings, foreign_key: 'user_id'
+    has_many :lessons, foreign_key: 'user_id'
 
     has_secure_password
 
@@ -11,5 +11,14 @@ class User < ApplicationRecord
     def full_name
         "#{first_name} #{last_name}"
     end
+
+    def teacher?
+        role == 'teacher'
+      end
+    
+      def student?
+        role == 'student'
+      end
+    
 end
 

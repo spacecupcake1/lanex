@@ -29,7 +29,7 @@
   <div class="lesson">
     <h3><%= link_to lesson.title, lesson_path(lesson) %></h3>
     <p>Level: <%= lesson.level %></p>
-    <p>Teacher: <%= lesson.teacher.full_name %></p>
+    <p>Teacher: <%= lesson.user.full_name %></p>
   </div>
 <% end %>
 

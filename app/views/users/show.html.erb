@@ -38,20 +38,3 @@
   <% end %>
   <%= link_to 'Create New Lesson', new_lesson_path %>
 <% end %>
-
-<% if @user.role == 'teacher' %>
-  <h3>My Lessons</h3>
-  <% if @user.lessons.any? %>
-    <% @user.lessons.each do |lesson| %>
-      <div class="lesson">
-        <h4><%= link_to lesson.title, lesson_path(lesson) %></h4>
-        <p>Level: <%= lesson.level %></p>
-        <%= link_to 'Edit', edit_lesson_path(lesson) %>
-        <%= link_to 'Delete', lesson_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    <% end %>
-  <% else %>
-    <p>You haven't created any lessons yet.</p>
-  <% end %>
-  <%= link_to 'Create New Lesson', new_lesson_path %>
-<% end %>

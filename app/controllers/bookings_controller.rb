@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = current_user.bookings.build(booking_params)
   end
 
   def edit
