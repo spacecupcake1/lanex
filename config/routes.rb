@@ -8,7 +8,15 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/signup', to: 'users#new'
 
+  get "sessions/index"
+  get "sessions/show"
+  get "sessions/new"
+  get "sessions/create"
+  get "sessions/edit"
+  get "sessions/update"
+  get "sessions/destroy"
   get "pages/home"
   get "bookings/index"
   get "bookings/show"
