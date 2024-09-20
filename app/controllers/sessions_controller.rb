@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: 'Logged in successfully'
     else
       flash.now[:alert] = 'Invalid username or password'
-      render :new
+      render :new, status: :unprocessable_entity  # Explicitly set status to 422
     end
   end
 
@@ -18,3 +18,4 @@ class SessionsController < ApplicationController
     redirect_to root_path, notice: 'Logged out successfully'
   end
 end
+
