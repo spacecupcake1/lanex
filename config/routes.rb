@@ -1,4 +1,36 @@
 Rails.application.routes.draw do
+  root 'pages#home'
+  
+  resources :users
+  resources :lessons
+  resources :bookings
+  
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  get "pages/home"
+  get "bookings/index"
+  get "bookings/show"
+  get "bookings/new"
+  get "bookings/create"
+  get "bookings/edit"
+  get "bookings/update"
+  get "bookings/destroy"
+  get "lessons/index"
+  get "lessons/show"
+  get "lessons/new"
+  get "lessons/create"
+  get "lessons/edit"
+  get "lessons/update"
+  get "lessons/destroy"
+  get "users/index"
+  get "users/show"
+  get "users/new"
+  get "users/create"
+  get "users/edit"
+  get "users/update"
+  get "users/destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
