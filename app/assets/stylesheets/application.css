@@ -19,9 +19,13 @@
     text-align: center;
  }
 
- body{
- background-color: bisque;
- }
+ body {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  height: 100vh; 
+  width: 97vw; 
+}
 
 .lesson {
   border: 1px solid #ddd;
