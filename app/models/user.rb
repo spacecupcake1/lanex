@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :bookings, foreign_key: 'user_id'
     has_many :lessons, foreign_key: 'user_id'
+    has_many :booked_lessons, through: :bookings, source: :lesson
 
     has_secure_password
 
