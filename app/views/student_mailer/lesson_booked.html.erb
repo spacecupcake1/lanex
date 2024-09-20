@@ -1,0 +1,15 @@
+<h1>Lesson Booked: <%= @lesson.title %></h1>
+
+<p>Dear <%= @student.first_name %>,</p>
+
+<p>You have successfully booked the following lesson:</p>
+
+<ul>
+  <li><strong>Lesson:</strong> <%= @lesson.title %></li>
+  <li><strong>Teaching Language:</strong> <%= @lesson.teaching_language %></li>
+  <li><strong>Level:</strong> <%= @lesson.level %></li>
+  <li><strong>Teacher:</strong> <%= @teacher.full_name %></li>
+  <li><strong>Booking Date:</strong> <%= @booking.booking_date %></li>
+</ul>
+
+<p>Thank you for using our platform!</p>

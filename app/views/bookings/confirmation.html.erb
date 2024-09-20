@@ -1,0 +1,13 @@
+<h1>Thank you for enrolling!</h1>
+
+<p>You have successfully booked the following lesson:</p>
+
+<h2><%= @booking.lesson.title %></h2>
+<p><strong>Teaching Language:</strong> <%= @booking.lesson.teaching_language %></p>
+<p><strong>Level:</strong> <%= @booking.lesson.level %></p>
+<p><strong>Teacher:</strong> <%= @booking.lesson.user.full_name %></p>
+<p><strong>Booking Date:</strong> <%= @booking.booking_date %></p>
+
+<p>You will receive an email with the course details shortly.</p>
+
+<%= link_to 'Back to My Profile', user_path(current_user) %>

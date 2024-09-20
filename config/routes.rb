@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
   resources :users
   resources :lessons
-  resources :bookings, only: [:create]
+  resources :bookings, only: [:create] do
+    get 'confirmation', on: :member
+  end
   
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
