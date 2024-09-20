@@ -7,7 +7,7 @@ class CreateLessons < ActiveRecord::Migration[7.2]
       t.string :available_days
       t.string :meeting_platform
       t.string :level
-      t.references :teacher, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
