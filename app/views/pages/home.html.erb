@@ -1,2 +1,34 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Mainpage</h1>
+
+<% if current_user %>
+  <h2>Hello, <%= current_user.first_name %></h2>
+  <%= link_to 'My Profile', user_path(current_user) %>
+  <%= link_to 'Logout', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login', login_path %>
+  <%= link_to 'Register', new_user_path %>
+<% end %>
+
+<h3>Find a Lesson</h3>
+<%= form_with(url: root_path, method: :get, local: true) do |form| %>
+  <%= form.label :teaching_language, "Teaching Language" %>
+  <%= form.select :teaching_language, Lesson.pluck(:teaching_language).uniq, include_blank: true %>
+
+  <%= form.label :known_language, "Known Language" %>
+  <%= form.select :known_language, Lesson.pluck(:known_language).uniq, include_blank: true %>
+
+  <%= form.label :level %>
+  <%= form.select :level, Lesson.pluck(:level).uniq, include_blank: true %>
+
+  <%= form.submit "Search" %>
+<% end %>
+
+<h3>Available Lessons</h3>
+
+<% @lessons.each do |lesson| %>
+  <%= render 'lessons/lesson_card', lesson: lesson %>
+<% end %>
+
+<% if current_user && current_user.role == 'teacher' %>
+  <%= link_to 'Create New Lesson', new_lesson_path %>
+<% end %>

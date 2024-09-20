@@ -18,3 +18,22 @@
     text-decoration: underline;
     text-align: center;
  }
+
+ body{
+ background-color: bisque;
+ }
+
+.lesson {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+select, input[type="submit"] {
+  margin-right: 10px;
+}

@@ -1,0 +1,6 @@
+<div class="lesson">
+  <h4><%= lesson.teaching_language %> (for <%= lesson.known_language %> speakers)</h4>
+  <p>Level: <%= lesson.level %></p>
+  <p>Teacher: <%= lesson.teacher.full_name %></p>
+  <%= link_to 'View Lesson', lesson_path(lesson) %>
+</div>
