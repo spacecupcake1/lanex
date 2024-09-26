@@ -1,13 +1,19 @@
-<h1>Thank you for enrolling!</h1>
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg">
+  <h1 class="text-4xl font-bold mb-6 text-center">Thank you for enrolling!</h1>
 
-<p>You have successfully booked the following lesson:</p>
+  <p class="text-lg mb-4 text-center">You have successfully booked the following lesson:</p>
 
-<h2><%= @booking.lesson.title %></h2>
-<p><strong>Teaching Language:</strong> <%= @booking.lesson.teaching_language %></p>
-<p><strong>Level:</strong> <%= @booking.lesson.level %></p>
-<p><strong>Teacher:</strong> <%= @booking.lesson.user.full_name %></p>
-<p><strong>Booking Date:</strong> <%= @booking.booking_date %></p>
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2"><%= @booking.lesson.title %></h2>
+    <p class="text-lg mb-2"><strong>Teaching Language:</strong> <%= @booking.lesson.teaching_language %></p>
+    <p class="text-lg mb-2"><strong>Level:</strong> <%= @booking.lesson.level %></p>
+    <p class="text-lg mb-2"><strong>Teacher:</strong> <%= @booking.lesson.user.full_name %></p>
+    <p class="text-lg mb-2"><strong>Booking Date:</strong> <%= @booking.booking_date %></p>
+  </div>
 
-<p>You will receive an email with the course details shortly.</p>
+  <p class="text-lg mb-6 text-center">You will receive an email with the course details shortly.</p>
 
-<%= link_to 'Back to My Profile', user_path(current_user) %>
+  <div class="text-center">
+    <%= link_to 'Back to My Profile', user_path(current_user), class: "btn btn-primary" %>
+  </div>
+</div>

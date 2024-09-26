@@ -15,19 +15,31 @@
  */
 
  h1{
-    text-decoration: underline;
-    text-align: center;
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
  }
+
+ h2{
+  text-decoration: underline;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
 
  body {
   background-image: linear-gradient(to bottom right, rgb(140, 216, 171), rgb(120, 132, 255));
   background-repeat: no-repeat;
   background-size: cover; 
   background-attachment: fixed;
-  width: 97vw; 
+  width: 99vw; 
   height: 100vh;
   margin: 0;
 }
+
+.container{
+  padding-left: 10px;
+}
+
 
 .lesson {
   border: 1px solid #ddd;
@@ -44,17 +56,75 @@ select, input[type="submit"] {
   margin-right: 10px;
 }
 
-.profile-details {
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
 .field {
   margin-bottom: 15px;
 }
 
 .actions {
   margin-top: 20px;
+}
+
+.btn {
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.25rem; /* rounded */
+  transition: background-color 0.3s;
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.btn-primary {
+  background-color: #4c51bf; /* Tailwind's indigo-600 */
+}
+
+.btn-primary:hover {
+  background-color: #2c5282; /* Tailwind's indigo-900 */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Bootstrap's secondary color */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker shade for hover */
+}
+
+.btn-danger {
+  background-color: #e3342f; /* Tailwind's red-600 */
+}
+
+.btn-danger:hover {
+  background-color: #cc1f1a; /* Tailwind's red-700 */
+}
+
+.flex {
+  display: flex;
+}
+
+.mb-4 {
+  margin-bottom: 1rem; /* Existing margin-bottom */
+  font-size: 1.125rem; /* Increase font size to 18px (1.125rem) */
+  line-height: 2rem; /* Add space between sentences */
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+#error_explanation {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }

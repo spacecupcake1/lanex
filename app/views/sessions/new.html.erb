@@ -1,27 +1,24 @@
 <h1>Login</h1>
 
 <% if flash[:alert] %>
-  <div class="alert alert-danger" style="color:red">
+  <div class="alert alert-danger bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
     <%= flash[:alert] %>
   </div>
 <% end %>
 
-<%= form_with(url: login_path, local: true) do |form| %>
-  <div>
-    <%= form.label :user_name %>
-    <%= form.text_field :user_name %>
+<%= form_with(url: login_path, local: true, class: "space-y-6") do |form| %>
+  <div class="field">
+    <%= form.label :user_name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :user_name, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+  <div class="field">
+    <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.password_field :password, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
-
-  <br>
   
-  <div class="button">
-    <%= form.submit "Log In" %>
+  <div class="flex space-x-2">
+    <%= form.submit "Log In", class: "btn btn-primary" %>
+    <%= link_to 'Register', new_user_path, class: "btn btn-secondary" %>
   </div>
 <% end %>

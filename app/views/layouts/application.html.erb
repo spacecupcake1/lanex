@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Lanex" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,24 +13,25 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
+    
     <style>
-      ul {
+      .navbar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: grey;
+        font-size: 25px;
       }
 
-      li {
+      .navbar li {
         float: left;
       }
 
-      li a {
+      .navbar li a {
         display: block;
         color: white;
         text-align: center;
@@ -37,7 +39,7 @@
         text-decoration: none;
       }
 
-      li a:hover {
+      .navbar li a:hover {
         background-color: #111;
       }
     </style>
@@ -59,7 +61,6 @@
       </nav>
 
       <div class="container">
-
         <section class="content">
         <%= yield %>
         </section>

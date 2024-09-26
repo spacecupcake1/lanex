@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_26_114311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
-    t.index ["user_id"], name: "index_bookings_on_student_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
