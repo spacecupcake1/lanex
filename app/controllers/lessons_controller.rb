@@ -36,8 +36,16 @@ class LessonsController < ApplicationController
   end
 
   def destroy
-    @lesson.destroy
-    redirect_to lessons_url, notice: 'Lesson was successfully destroyed.'
+    begin
+      ActiveRecord::Base.transaction do
+        @lesson.destroy!
+      end
+      redirect_to lessons_path, notice: 'Lesson was successfully deleted.'
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to @lesson, alert: "Failed to delete the lesson: #{e.record.errors.full_messages.join(", ")}"
+    rescue => e
+      redirect_to @lesson, alert: "An error occurred while deleting the lesson: #{e.message}"
+    end
   end
 
   private

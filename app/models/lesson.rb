@@ -1,6 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :user, class_name: 'User', foreign_key: 'user_id'
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :students, through: :bookings, source: :user
 
   scope :filter_by_teaching_language, ->(language) { where(teaching_language: language) if language.present? }
