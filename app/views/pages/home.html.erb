@@ -2,25 +2,34 @@
   <h1>Hello, <%= current_user.first_name %></h1>
 <% end %>
 
-<h2>Find a Lesson</h2>
-<%= form_with(url: root_path, method: :get, local: true) do |form| %>
-  <%= form.label :teaching_language, "Teaching Language" %>
-  <%= form.select :teaching_language, Lesson.pluck(:teaching_language).uniq, include_blank: true %>
+<h2 class="text-xl font-semibold mb-4">Find a Lesson</h2>
+<%= form_with(url: root_path, method: :get, local: true, class: "flex space-x-4 items-end") do |form| %>
+  <div class="flex-1">
+    <%= form.label :teaching_language, "Teaching Language", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :teaching_language, Lesson.pluck(:teaching_language).uniq, { include_blank: true }, class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
+  </div>
 
-  <%= form.label :known_language, "Known Language" %>
-  <%= form.select :known_language, Lesson.pluck(:known_language).uniq, include_blank: true %>
+  <div class="flex-1">
+    <%= form.label :known_language, "Known Language", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :known_language, Lesson.pluck(:known_language).uniq, { include_blank: true }, class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
+  </div>
 
-  <%= form.label :level %>
-  <%= form.select :level, Lesson.pluck(:level).uniq, include_blank: true %>
+  <div class="flex-1">
+    <%= form.label :level, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :level, Lesson.pluck(:level).uniq, { include_blank: true }, class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
+  </div>
 
-  <%= form.submit "Search" %>
+  <div>
+    <%= form.submit "Search", class: "btn" %>
+    <%= link_to 'Clear', root_path, class: "btn" %>
+  </div>
 <% end %>
 
-<h2>Available Lessons</h2>
+<h2 class="text-xl font-semibold mt-8 mb-4">Available Lessons</h2>
 <% @lessons.each do |lesson| %>
-  <div class="lesson">
-    <h3><%= link_to lesson.title, lesson_path(lesson) %></h3>
-    <p>Level: <%= lesson.level %></p>
-    <p>Teacher: <%= lesson.user.full_name %></p>
+  <div class="lesson mb-4 p-4 border border-gray-200 rounded-lg shadow">
+    <h3 class="text-lg font-semibold"><%= link_to lesson.title, lesson_path(lesson), class: "text-indigo-600 hover:text-indigo-900" %></h3>
+    <p class="text-sm text-gray-700">Level: <%= lesson.level %></p>
+    <p class="text-sm text-gray-700">Teacher: <%= lesson.user.full_name %></p>
   </div>
 <% end %>

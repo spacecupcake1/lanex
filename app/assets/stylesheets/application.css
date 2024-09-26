@@ -66,6 +66,8 @@ select, input[type="submit"] {
   padding: 0.5rem 1rem; /* py-2 px-4 */
   border-radius: 0.25rem; /* rounded */
   transition: background-color 0.3s;
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 .btn:hover {
