@@ -25,7 +25,3 @@
     <p>Teacher: <%= lesson.user.full_name %></p>
   </div>
 <% end %>
-
-<% if current_user && current_user.role == 'teacher' %>
-  <%= link_to 'Create New Lesson', new_lesson_path %>
-<% end %>

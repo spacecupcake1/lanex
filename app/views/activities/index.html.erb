@@ -5,11 +5,11 @@
   <p>Activities on this page: <%= @activities.size %></p>
 
   <% if @activities.empty? %>
-  <p>No activities found.</p>
+    <p>No activities found.</p>
   <% else %>
     <div class="space-y-4">
       <% @activities.each do |activity| %>
-        <div class="bg-white shadow rounded-lg p-4">
+        <div class="bg-white shadow rounded-lg p-6 border border-gray-200 mt-4 w-1/2 mx-auto">
           <div class="flex items-center">
             <div class="ml-3">
               <p class="text-sm font-medium text-gray-900">
@@ -27,18 +27,11 @@
                 <%= link_to "View lesson", lesson_path(activity.trackable), class: "text-indigo-600 hover:text-indigo-900" %>
               <% when 'User' %>
                 <%= link_to "View user", user_path(activity.trackable), class: "text-indigo-600 hover:text-indigo-900" %>
-              <% when 'Booking' %>
-                <%= link_to "View booking", root_path, class: "text-indigo-600 hover:text-indigo-900" %>
-              <% else %>
-                <%= link_to "View #{activity.trackable_type.downcase}", activity.trackable, class: "text-indigo-600 hover:text-indigo-900" %>
               <% end %>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
-
-    <div class="mt-8">
-      <%= paginate @activities %>
-    </div>
   <% end %>
+</div>
