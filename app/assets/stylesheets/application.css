@@ -36,6 +36,11 @@
   margin: 0;
 }
 
+.container{
+  padding-left: 10px;
+}
+
+
 .lesson {
   border: 1px solid #ddd;
   padding: 10px;
