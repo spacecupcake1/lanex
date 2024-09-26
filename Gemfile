@@ -49,6 +49,8 @@ group :development, :test do
   gem 'letter_opener', group: :development
   gem 'letter_opener_web', group: :development
   gem 'dotenv-rails', groups: [:development, :test]
+
+  gem 'kaminari'
   
 end
 

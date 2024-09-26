@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get "activities/index"
   root 'pages#home'
   
   resources :users
   resources :lessons
+  resources :activities, only: [:index]
   resources :bookings, only: [:create] do
     get 'confirmation', on: :member
   end
