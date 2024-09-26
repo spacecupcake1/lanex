@@ -109,14 +109,15 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'your-production-domain.com' }
 
   # Use SMTP for production (example for SendGrid)
+  config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'your-production-domain.com',
-    user_name:            ENV['SENDGRID_USERNAME'],
-    password:             ENV['SENDGRID_PASSWORD'],
-    authentication:       'plain',
+    user_name: 'cd927807be7732',
+    password: '********d657',
+    address: 'smtp.mailtrap.io',
+    host: 'smtp.mailtrap.io',
+    port: '2525',
+    authentication: :login,
     enable_starttls_auto: true
   }
 

@@ -45,6 +45,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem 'letter_opener', group: :development
+  gem 'letter_opener_web', group: :development
+  gem 'dotenv-rails', groups: [:development, :test]
   
 end
 
