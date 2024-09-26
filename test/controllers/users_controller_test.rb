@@ -57,10 +57,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should update user when logged in as that user" do
     login_as(@user)
-    patch user_url(@user), params: { user: { email: 'updated@example.com' } }
-    assert_redirected_to user_url(@user)
+    put user_url(@user), params: { user: { email: 'updated@example.com', password: 'newpassword', password_confirmation: 'newpassword' } }
     @user.reload
-    assert_equal 'updated@example.com', @user.email
+    assert_response :redirect
+    assert_redirected_to user_url(@user)
+    assert_equal 'updated@example.com', @user.email, "Email was not updated as expected"
   end
 
   test "should redirect update when not logged in as that user" do

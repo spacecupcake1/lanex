@@ -43,9 +43,14 @@
     </style>
   </head>
 
-  <body style="backgroundcolor:white;">
+  <body>
 
     <header>
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %>" style="color:blue; font-size:30px; text-align:center;">
+          <%= message %>
+        </div>
+      <% end %>
         <%= render 'layouts/header' %>
       </header>
 
@@ -56,11 +61,6 @@
       <div class="container">
 
         <section class="content">
-        <% flash.each do |type, message| %>
-          <div class="alert alert-<%= type %>" style="color:white; font-size:30px; text-align:center;">
-            <%= message %>
-          </div>
-        <% end %>
         <%= yield %>
         </section>
       </div>
