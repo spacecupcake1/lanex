@@ -1,10 +1,10 @@
 <h1>Register</h1>
 
-<%= form_with(model: @user, local: true) do |form| %>
+<%= form_with(model: @user, local: true, class: "space-y-6") do |form| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
+    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+      <h2 class="font-bold mb-2"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul class="list-disc list-inside">
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -12,56 +12,42 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :user_name %>
-    <%= form.text_field :user_name %>
+  <div class="field">
+    <%= form.label :first_name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :first_name, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+  <div class="field">
+    <%= form.label :last_name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :last_name, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+  <div class="field">
+    <%= form.label :user_name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :user_name, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
+  <div class="field">
+    <%= form.label :role, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :role, ['student', 'teacher'], {}, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="field">
+    <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.email_field :email, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="field">
+    <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.password_field :password, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
-  <div>
-    <%= form.label :role %>
-    <%= form.select :role, ['student', 'teacher'] %>
+  <div class="field">
+    <%= form.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.password_field :password_confirmation, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <br>
-
   <div>
-    <%= form.submit "Register" %>
+    <%= form.submit "Register", class: "btn btn-primary" %>
   </div>
 <% end %>

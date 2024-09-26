@@ -1,8 +1,8 @@
-<%= form_with(model: lesson, local: true) do |form| %>
+<%= form_with(model: lesson, local: true, class: "space-y-6") do |form| %>
   <% if lesson.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
-      <ul>
+    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+      <h2 class="font-bold mb-2"><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+      <ul class="list-disc list-inside">
         <% lesson.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -11,31 +11,32 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :teaching_language %>
-    <%= form.text_field :teaching_language %>
+    <%= form.label :teaching_language, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :teaching_language, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
   <div class="field">
-    <%= form.label :known_language %>
-    <%= form.text_field :known_language %>
+    <%= form.label :known_language, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :known_language, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
   <div class="field">
-    <%= form.label :level %>
-    <%= form.select :level, ['Beginner', 'Intermediate', 'Advanced'], prompt: 'Select level' %>
+    <%= form.label :level, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :level, ['Beginner', 'Intermediate', 'Advanced'], { prompt: 'Select level' }, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
   <div class="field">
-    <%= form.label :available_days %>
-    <%= form.text_field :available_days %>
+    <%= form.label :available_days, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :available_days, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
   <div class="field">
-    <%= form.label :meeting_platform %>
-    <%= form.text_field :meeting_platform %>
+    <%= form.label :meeting_platform, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :meeting_platform, class: "mt-1 block w-full max-w-lg pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="flex space-x-2">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+    <%= link_to 'Cancel', root_path, class: "btn btn-secondary" %>
   </div>
 <% end %>

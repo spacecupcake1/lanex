@@ -19,9 +19,9 @@
     <%= form.select :level, Lesson.pluck(:level).uniq, { include_blank: true }, class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
   </div>
 
-  <div>
-    <%= form.submit "Search", class: "btn" %>
-    <%= link_to 'Clear', root_path, class: "btn" %>
+  <div class="flex space-x-2">
+    <%= form.submit "Search", class: "btn btn-primary" %>
+    <%= link_to 'Clear', root_path, class: "btn btn-secondary" %>
   </div>
 <% end %>
 
@@ -30,6 +30,5 @@
   <div class="lesson mb-4 p-4 border border-gray-200 rounded-lg shadow">
     <h3 class="text-lg font-semibold"><%= link_to lesson.title, lesson_path(lesson), class: "text-indigo-600 hover:text-indigo-900" %></h3>
     <p class="text-sm text-gray-700">Level: <%= lesson.level %></p>
-    <p class="text-sm text-gray-700">Teacher: <%= lesson.user.full_name %></p>
   </div>
 <% end %>
