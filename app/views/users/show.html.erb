@@ -1,40 +1,46 @@
 <h1>My Profile</h1>
 
-<div class="profile-details">
-  <h2><%= @user.full_name %></h2>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <p><strong>Role:</strong> <%= @user.role.capitalize %></p>
+<div class="container w-1/2 mx-auto px-4 py-8">
+  <div class="bg-transparent shadow rounded-lg p-6 border border-gray-200 mb-4 relative">
+    <div class="profile-details">
+      <h2 class="text-3xl font-bold mb-6"><%= @user.full_name %></h2>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Role:</strong> <%= @user.role.capitalize %></p>
+    </div>
+
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: "text-white bg-indigo-600 hover:bg-indigo-900 font-bold py-2 px-4 rounded absolute top-0 right-0 mt-4 mr-4" %>
+  </div>
+
+  <% if @user.role == 'student' %>
+    <div class="bg-transparent shadow rounded-lg p-6 border border-gray-200">
+      <h2 class="text-3xl font-bold mb-6">My Courses</h2>
+      <% if @user.bookings.any? %>
+        <ul class="space-y-4">
+          <% @user.bookings.each do |booking| %>
+            <li class="bg-white shadow rounded-lg p-4 border border-gray-200 text-center">
+              <%= booking.lesson.teaching_language %> (Level: <%= booking.lesson.level %>)
+              - Booked on: <%= booking.booking_date %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>You haven't booked any courses yet.</p>
+      <% end %>
+    </div>
+  <% elsif @user.role == 'teacher' %>
+    <div class="bg-transparent shadow rounded-lg p-6 border border-gray-200">
+      <h3 class="text-3xl font-bold mb-6">My Lessons</h3>
+      <% if @user.lessons.any? %>
+        <ul class="space-y-4">
+          <% @user.lessons.each do |lesson| %>
+            <li class="bg-white shadow rounded-lg p-4 border border-gray-200 text-center">
+              <%= lesson.teaching_language %> (Level: <%= lesson.level %>)
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>You haven't created any lessons yet.</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-<%= link_to 'Edit Profile', edit_user_path(@user) %>
-
-<% if @user.role == 'student' %>
-  <h3>My Courses</h3>
-  <% if @user.bookings.any? %>
-    <ul>
-      <% @user.bookings.each do |booking| %>
-        <li>
-          <%= booking.lesson.teaching_language %> (Level: <%= booking.lesson.level %>)
-          - Booked on: <%= booking.booking_date %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>You haven't booked any courses yet.</p>
-  <% end %>
-<% elsif @user.role == 'teacher' %>
-  <h3>My Lessons</h3>
-  <% if @user.lessons.any? %>
-    <ul>
-      <% @user.lessons.each do |lesson| %>
-        <li>
-          <%= lesson.teaching_language %> (Level: <%= lesson.level %>)
-          - <%= pluralize(lesson.bookings.count, 'student') %> enrolled
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>You haven't created any lessons yet.</p>
-  <% end %>
-  <%= link_to 'Create New Lesson', new_lesson_path %>
-<% end %>
