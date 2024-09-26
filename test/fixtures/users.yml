@@ -6,6 +6,14 @@ one:
   last_name: Doe
   role: student
 
+two:
+  user_name: user2
+  email: user2@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  first_name: Jane
+  last_name: Doe
+  role: student
+
 admin:
   user_name: admin
   email: admin@example.com
