@@ -1,19 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  lesson_id: MyString
-  teaching_language: MyString
-  known_language: MyString
-  available_days: MyString
-  meeting_platform: MyString
-  level: MyString
-  teacher: one
+  teaching_language: English
+  known_language: Spanish
+  level: Beginner
+  available_days: Monday,Wednesday,Friday
+  meeting_platform: Zoom
+  user: teacher
 
 two:
-  lesson_id: MyString
-  teaching_language: MyString
-  known_language: MyString
-  available_days: MyString
-  meeting_platform: MyString
-  level: MyString
-  teacher: two
+  teaching_language: French
+  known_language: English
+  level: Intermediate
+  available_days: Tuesday,Thursday
+  meeting_platform: Skype
+  user: teacher

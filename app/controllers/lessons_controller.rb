@@ -2,6 +2,7 @@ class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   before_action :authorize_teacher, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_owner, only: [:edit, :update, :destroy]
 
   def index
     @lessons = Lesson.all
@@ -46,7 +47,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:teaching_language, :known_language, :level, :available_days, :meeting_platform)
+    params.require(:lesson).permit(:title, :teaching_language, :known_language, :level, :available_days, :meeting_platform)
   end
 
   def require_login
@@ -60,6 +61,13 @@ class LessonsController < ApplicationController
     unless current_user.role == 'teacher'
       flash[:error] = "Only teachers can perform this action"
       redirect_to root_path
+    end
+  end
+
+  def ensure_owner
+    unless current_user == @lesson.user
+      flash[:error] = "You can only edit or delete your own lessons"
+      redirect_to lessons_path
     end
   end
 end
