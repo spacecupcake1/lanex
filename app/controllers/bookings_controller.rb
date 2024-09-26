@@ -7,10 +7,18 @@ class BookingsController < ApplicationController
     @booking = current_user.bookings.build(lesson: @lesson, booking_date: Date.today)
     
     if @booking.save
-      redirect_to user_path(current_user), notice: 'Lesson booked successfully!'
+      # Send emails
+      StudentMailer.lesson_booked(@booking).deliver_now
+      TeacherMailer.new_student_enrolled(@booking).deliver_now
+      
+      redirect_to confirmation_booking_path(@booking)
     else
       redirect_to lesson_path(@lesson), alert: 'Unable to book the lesson.'
     end
+  end
+
+  def confirmation
+    @booking = Booking.find(params[:id])
   end
 
   private

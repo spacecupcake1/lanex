@@ -1,2 +1,6 @@
-<h1>Lessons#edit</h1>
-<p>Find me in app/views/lessons/edit.html.erb</p>
+<h1>Edit Lesson</h1>
+
+<%= render 'form', lesson: @lesson %>
+
+<%= link_to 'Show', @lesson %> |
+<%= link_to 'Back', lessons_path %>

@@ -1,0 +1,13 @@
+<h1>New Student Enrolled: <%= @lesson.title %></h1>
+
+<p>Dear <%= @teacher.first_name %>,</p>
+
+<p>A new student has enrolled in your lesson:</p>
+
+<ul>
+  <li><strong>Lesson:</strong> <%= @lesson.title %></li>
+  <li><strong>Student:</strong> <%= @student.full_name %></li>
+  <li><strong>Booking Date:</strong> <%= @booking.booking_date %></li>
+</ul>
+
+<p>Please prepare for the upcoming lesson.</p>

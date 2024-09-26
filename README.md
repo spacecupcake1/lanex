@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* To see the inboxes in the browser, go to: http://localhost:3000/letter_opener
+
+rails assets:precompile= For css

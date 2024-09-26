@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get "activities/index"
   root 'pages#home'
   
   resources :users
   resources :lessons
-  resources :bookings, only: [:create]
+  resources :activities, only: [:index]
+  resources :bookings, only: [:create] do
+    get 'confirmation', on: :member
+  end
   
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -49,6 +53,10 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # Defines the root path route ("/")
   # root "posts#index"

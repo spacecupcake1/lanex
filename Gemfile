@@ -43,6 +43,15 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rails-controller-testing"
+
+  gem 'letter_opener', group: :development
+  gem 'letter_opener_web', group: :development
+  gem 'dotenv-rails', groups: [:development, :test]
+
+  gem 'kaminari'
+  
 end
 
 group :development do

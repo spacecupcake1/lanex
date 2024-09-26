@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -59,6 +60,13 @@ class UsersController < ApplicationController
   def authorize_user
     unless @user == current_user
       flash[:error] = "You are not authorized to view or edit this profile"
+      redirect_to root_path
+    end
+  end
+
+  def require_admin
+    unless current_user&.role == 'admin'
+      flash[:error] = "You must be an admin to access this section"
       redirect_to root_path
     end
   end

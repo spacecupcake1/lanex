@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_21_000002) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_26_114311) do
+  create_table "activities", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "trackable_type", null: false
+    t.integer "trackable_id", null: false
+    t.string "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.string "booking_id"
     t.date "booking_date"
@@ -48,6 +59,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_21_000002) do
     t.string "email"
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "bookings", "lessons"
   add_foreign_key "bookings", "users"
   add_foreign_key "lessons", "users"

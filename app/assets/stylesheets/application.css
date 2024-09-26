@@ -20,11 +20,13 @@
  }
 
  body {
-  background-image: linear-gradient(to bottom right, red, yellow);
+  background-image: linear-gradient(to bottom right, rgb(140, 216, 171), rgb(120, 132, 255));
   background-repeat: no-repeat;
   background-size: cover; 
-  height: 100vh; 
+  background-attachment: fixed;
   width: 97vw; 
+  height: 100vh;
+  margin: 0;
 }
 
 .lesson {

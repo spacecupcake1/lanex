@@ -99,4 +99,26 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # Enable email delivery
+  config.active_job.queue_adapter = :async
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  
+  # Set your actual production host
+  config.action_mailer.default_url_options = { host: 'your-production-domain.com' }
+
+  # Use SMTP for production (example for SendGrid)
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: 'cd927807be7732',
+    password: '********d657',
+    address: 'smtp.mailtrap.io',
+    host: 'smtp.mailtrap.io',
+    port: '2525',
+    authentication: :login,
+    enable_starttls_auto: true
+  }
+
 end

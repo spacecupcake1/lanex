@@ -1,38 +1,27 @@
-require "test_helper"
+require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get sessions_index_url
-    assert_response :success
-  end
-
-  test "should get show" do
-    get sessions_show_url
-    assert_response :success
-  end
-
   test "should get new" do
-    get sessions_new_url
+    get login_url
     assert_response :success
   end
 
-  test "should get create" do
-    get sessions_create_url
-    assert_response :success
+  test "should create session with valid credentials" do
+    user = users(:one)
+    post login_url, params: { user_name: user.user_name, password: 'password' }
+    assert_redirected_to root_url
+    assert_equal user.id, session[:user_id]
   end
 
-  test "should get edit" do
-    get sessions_edit_url
-    assert_response :success
+  test "should not create session with invalid credentials" do
+    post login_url, params: { user_name: 'nonexistent', password: 'wrong' }
+    assert_response :unprocessable_entity
+    assert_nil session[:user_id]
   end
 
-  test "should get update" do
-    get sessions_update_url
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get sessions_destroy_url
-    assert_response :success
+  test "should destroy session" do
+    delete logout_url
+    assert_redirected_to root_url
+    assert_nil session[:user_id]
   end
 end

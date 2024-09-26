@@ -1,0 +1,44 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-6">Activity Feed</h1>
+
+  <p>Total activities: <%= @activities.total_count %></p>
+  <p>Activities on this page: <%= @activities.size %></p>
+
+  <% if @activities.empty? %>
+  <p>No activities found.</p>
+  <% else %>
+    <div class="space-y-4">
+      <% @activities.each do |activity| %>
+        <div class="bg-white shadow rounded-lg p-4">
+          <div class="flex items-center">
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900">
+                <%= activity.description %>
+              </p>
+              <p class="text-sm text-gray-500">
+                <%= time_ago_in_words(activity.created_at) %> ago
+              </p>
+            </div>
+          </div>
+          <% if activity.trackable %>
+            <div class="mt-2 text-sm text-gray-700">
+              <% case activity.trackable_type %>
+              <% when 'Lesson' %>
+                <%= link_to "View lesson", lesson_path(activity.trackable), class: "text-indigo-600 hover:text-indigo-900" %>
+              <% when 'User' %>
+                <%= link_to "View user", user_path(activity.trackable), class: "text-indigo-600 hover:text-indigo-900" %>
+              <% when 'Booking' %>
+                <%= link_to "View booking", root_path, class: "text-indigo-600 hover:text-indigo-900" %>
+              <% else %>
+                <%= link_to "View #{activity.trackable_type.downcase}", activity.trackable, class: "text-indigo-600 hover:text-indigo-900" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mt-8">
+      <%= paginate @activities %>
+    </div>
+  <% end %>
