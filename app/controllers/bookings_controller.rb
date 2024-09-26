@@ -8,8 +8,8 @@ class BookingsController < ApplicationController
     
     if @booking.save
       # Send emails
-      StudentMailer.lesson_booked(@booking).deliver_later
-      TeacherMailer.new_student_enrolled(@booking).deliver_later
+      StudentMailer.lesson_booked(@booking).deliver_now
+      TeacherMailer.new_student_enrolled(@booking).deliver_now
       
       redirect_to confirmation_booking_path(@booking)
     else
