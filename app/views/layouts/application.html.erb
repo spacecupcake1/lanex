@@ -15,14 +15,59 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+    </style>
   </head>
 
-  <body>
-    <% flash.each do |type, message| %>
-      <div class="alert alert-<%= type %>">
-        <%= message %>
+  <body style="backgroundcolor:white;">
+
+    <header>
+        <%= render 'layouts/header' %>
+      </header>
+
+      <nav>
+        <%= render 'layouts/navbar' %>
+      </nav>
+
+      <div class="container">
+
+        <section class="content">
+        <% flash.each do |type, message| %>
+          <div class="alert alert-<%= type %>" style="color:white; font-size:30px; text-align:center;">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= yield %>
+        </section>
       </div>
-    <% end %>
-    <%= yield %>
+
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
+    
   </body>
 </html>
