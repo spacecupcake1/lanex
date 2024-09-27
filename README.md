@@ -13,14 +13,40 @@ Follow these steps to get the application up and running:
 ```sh
 git clone https://github.com/spacecupcake1/lanex.git
 cd main
+```
 
 ### 2. Install dependencies
 
 ```sh
 bundle install
+```
 
+### 3. Set up the database
 
+```sh
+rails db:create
+rails db:migrate
+```
 
-* To see the inboxes in the browser, go to: http://localhost:3000/letter_opener
+### 4. Precompile assets
 
-rails assets:precompile= For css
+```sh
+rails assets:precompile
+```
+### 5. Start the server
+
+```sh
+rails server
+```
+Visit http://localhost:3000 in your browser to see the application running.
+
+### Running Tests
+
+```sh
+rails test
+```
+
+### Optional: Inboxes
+
+To see the inboxes in the browser, go to: http://localhost:3000/letter_opener
+
