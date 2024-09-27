@@ -46,6 +46,8 @@ group :development, :test do
 
   gem "rails-controller-testing"
 
+  gem 'simplecov', require: false, group: :test
+
   gem 'letter_opener', group: :development
   gem 'letter_opener_web', group: :development
   gem 'dotenv-rails', groups: [:development, :test]

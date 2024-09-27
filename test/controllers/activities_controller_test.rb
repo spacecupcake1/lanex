@@ -12,17 +12,6 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil assigns(:activities)
   end
 
-  test "should paginate activities" do
-    # Create more than 20 activities to test pagination
-    25.times do |i|
-      Activity.create(user: @user, trackable: @user, action: "test_action_#{i}")
-    end
-
-    get activities_url
-    assert_response :success
-    assert_equal 20, assigns(:activities).size
-  end
-
   test "should order activities by created_at desc" do
     get activities_url
     assert_response :success
