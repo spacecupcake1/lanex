@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an multi-user application website for language exchange Programm. It is built using Ruby on Rails.
+This project website for language exchange Programm. It is built using Ruby on Rails and is a multi-user application.
 
 ## Getting Started
 
