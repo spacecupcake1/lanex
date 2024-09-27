@@ -4,6 +4,7 @@ class Lesson < ApplicationRecord
   has_many :students, through: :bookings, source: :user
   after_create :create_activity
   after_update :update_activity
+  after_destroy :destroy_activity
 
   scope :filter_by_teaching_language, ->(language) { where(teaching_language: language) if language.present? }
   scope :filter_by_known_language, ->(language) { where(known_language: language) if language.present? }
@@ -27,5 +28,9 @@ class Lesson < ApplicationRecord
 
   def update_activity
     Activity.create(user: self.user, trackable: self, action: 'update')
+  end
+
+  def destroy_activity
+    Activity.create(user: self.user, trackable: self, action: 'destroy')
   end
 end

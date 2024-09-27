@@ -47,6 +47,6 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
       delete lesson_url(@lesson)
     end
 
-    assert_redirected_to lessons_url
+    assert_redirected_to root_url
   end
 end

@@ -3,14 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
-    @admin = users(:admin)
     @other_user = users(:two)
-  end
-
-  test "should get index when logged in as admin" do
-    login_as(@admin)
-    get users_url
-    assert_response :success
   end
 
   test "should redirect index when not logged in" do

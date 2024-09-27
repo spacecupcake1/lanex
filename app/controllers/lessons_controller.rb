@@ -40,7 +40,7 @@ class LessonsController < ApplicationController
       ActiveRecord::Base.transaction do
         @lesson.destroy!
       end
-      redirect_to lessons_path, notice: 'Lesson was successfully deleted.'
+      redirect_to root_path, notice: 'Lesson was successfully deleted.'
     rescue ActiveRecord::RecordNotDestroyed => e
       redirect_to @lesson, alert: "Failed to delete the lesson: #{e.record.errors.full_messages.join(", ")}"
     rescue => e
