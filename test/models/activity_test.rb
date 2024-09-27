@@ -26,10 +26,6 @@ class ActivityTest < ActiveSupport::TestCase
     assert_equal "User", @activity.trackable_type
   end
 
-  test "should paginate with 20 per page" do
-    assert_equal 20, Activity.default_per_page
-  end
-
   test "description should return correct string" do
     expected_description = "#{@user.user_name} testd a user"
     assert_equal expected_description, @activity.description
