@@ -1,27 +1,25 @@
-# README
+# Lanex
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+This project is an multi-user application website for language exchange Programm. It is built using Ruby on Rails.
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+Follow these steps to get the application up and running:
 
-* Configuration
+### 1. Clone the repository
 
-* Database creation
+```sh
+git clone https://github.com/spacecupcake1/lanex.git
+cd main
 
-* Database initialization
+### 2. Install dependencies
 
-* How to run the test suite
+```sh
+bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
 
 * To see the inboxes in the browser, go to: http://localhost:3000/letter_opener
 
