@@ -14,14 +14,6 @@ two:
   last_name: Doe
   role: student
 
-admin:
-  user_name: admin
-  email: admin@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>
-  first_name: Admin
-  last_name: User
-  role: admin
-
 teacher:
   user_name: teacher
   email: teacher@example.com
